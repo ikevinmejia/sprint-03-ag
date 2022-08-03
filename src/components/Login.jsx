@@ -13,7 +13,7 @@ const Login = () => {
                 <h1 className='text-2xl text-white'>Sign In</h1>
                 <input type="email" placeholder='Email' className='w-full p-2 pl-5 mt-4 text-white rounded-full outline-none bg-secondary' />
                 <input type="password" placeholder='Password' className='w-full p-2 pl-5 mt-3 text-white rounded-full outline-none bg-secondary' />
-                <input type="submit" value="Sing In" className='w-full p-3 mt-8 text-white rounded-full cursor-pointer bg-primary' />
+                <input type="submit" value="Sing In" className='w-full p-3 mt-8 text-white rounded-full cursor-pointer bg-primary hover:bg-cyan-300' />
                 <p className='text-white text-[10px] font-thin mt-2 cursor-pointer'>Forgot Password ?</p>
             </form>
 
