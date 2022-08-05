@@ -1,31 +1,34 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useForm } from '../Hooks/useForm'
+import React from "react";
+import { Link } from "react-router-dom";
+import { useForm } from "../Hooks/useForm";
 import { useDispatch } from "react-redux";
-import { loginFacebook, loginGoogle } from "../Redux/Actions/userActions";
-
+import {
+  loginFacebook,
+  loginGoogle,
+  LoginWithEmail,
+} from "../Redux/Actions/userActions";
 
 const Login = () => {
-    const { formValue, handleInputChangeName, reset } = useForm({
-        email: '',
-        password: ''
-    })
-    const dispatch = useDispatch();
+  const { formValue, handleInputChangeName, reset } = useForm({
+    email: "",
+    password: "",
+  });
+  const dispatch = useDispatch();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formValue);
-        // dispatch(LoginWithEmail(formValue.email, formValue.password))
-        reset()
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValue);
+    dispatch(LoginWithEmail(formValue.email, formValue.password));
+    reset();
+  };
 
-    const handleGoogle = () => {
-        dispatch(loginGoogle())
-    }
+  const handleGoogle = () => {
+    dispatch(loginGoogle());
+  };
 
-    const handleFacebook = () => {
-        dispatch(loginFacebook())
-    }
+  const handleFacebook = () => {
+    dispatch(loginFacebook());
+  };
 
     return (
         <div className='container relative flex flex-col items-center justify-center h-screen max-w-4xl mx-auto'>
@@ -33,7 +36,7 @@ const Login = () => {
                 <img className='md:w-52 md:h-52' src={require('../img/favicon.png')} alt="logo" />
             </div>
 
-            <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-full max-w-md px-5 mt-6 '>
+            <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-full px-5 mt-6'>
                 <h1 className='text-2xl text-white'>Sign In</h1>
                 <input onChange={handleInputChangeName} name="email" type="email" placeholder='Email' className='w-full p-2 pl-5 mt-4 text-white rounded-full outline-none bg-secondary' />
                 <input onChange={handleInputChangeName} name="password" type="password" placeholder='Password' className='w-full p-2 pl-5 mt-3 text-white rounded-full outline-none bg-secondary' />
@@ -63,5 +66,3 @@ const Login = () => {
         </div>
     )
 }
-
-export default Login

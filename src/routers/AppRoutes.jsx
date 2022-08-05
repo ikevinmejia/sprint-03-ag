@@ -46,7 +46,6 @@ function AppRoutes() {
           <Route path="/Authentification" element={<PhoneAuthen />} />
           <Route path="/register" element={<Register />} />
 
-
           <Route
             path="/getHeight"
             element={
@@ -89,12 +88,7 @@ function AppRoutes() {
           />
         </Routes>
       </ContextProvider>
-      <Routes>
-        {/* <Route path="/" element={<Introduce text={"felipe"} goTo="/home" />} />
-        <Route path="/home" element={<Introduce text={"nuthelk"} goTo="/" />} /> */}
-
-
-      </Routes>
+        
     </BrowserRouter>
   );
 }
