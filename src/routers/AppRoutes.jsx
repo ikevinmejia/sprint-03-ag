@@ -5,6 +5,9 @@ import { ContextProvider } from "../context/ContextProvider";
 import GetGenerUser from "../pages/GetGenerUser";
 import GetInfoUser from "../pages/GetInfoUser";
 import Inicio from "../pages/Inicio";
+import Login from "../components/Login";
+import Register from "../components/Register";
+import PhoneAuthen from "../containers/PhoneAuthen";
 
 function AppRoutes() {
   return (
@@ -34,10 +37,16 @@ function AppRoutes() {
                 textButton={"Registration"}
                 imgMobile={"bg-b3"}
                 imgLarge={"md:bg-b3f"}
-                goTo="/getHeight"
+                goTo="/login"
               />
             }
           />
+
+          <Route path="/login" element={<Login />} />
+          <Route path="/Authentification" element={<PhoneAuthen />} />
+          <Route path="/register" element={<Register />} />
+
+
           <Route
             path="/getHeight"
             element={
@@ -80,6 +89,12 @@ function AppRoutes() {
           />
         </Routes>
       </ContextProvider>
+      <Routes>
+        {/* <Route path="/" element={<Introduce text={"felipe"} goTo="/home" />} />
+        <Route path="/home" element={<Introduce text={"nuthelk"} goTo="/" />} /> */}
+
+
+      </Routes>
     </BrowserRouter>
   );
 }
