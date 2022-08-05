@@ -14,7 +14,6 @@ function AppRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/Authentification" element={<PhoneAuthen />} />
         <Route path="/register" element={<Register />} />
-
       </Routes>
     </BrowserRouter>
   );

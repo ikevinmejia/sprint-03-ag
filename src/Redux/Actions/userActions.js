@@ -15,6 +15,41 @@ const loginSync = (user) => ({
   payload: user,
 });
 
+export const registerWithEmail = (email, password, name, phoneNumber) => {
+  return (dispatch) => {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password, phoneNumber)
+      .then(async () => {
+        await updateProfile(auth.currentUser, { displayName: name });
+        dispatch(registerSync({ email, password, name, phoneNumber }));
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
+  };
+};
+
+const registerSync = (user) => {
+  return {
+    type: userTypes.register,
+    payload: user,
+  };
+};
+
+export const LoginWithEmail = (email, password) => {
+  return (dispatch) => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({ user: { displayName, email } }) =>
+        dispatch(loginSync({ displayName, email, password }))
+      )
+      .catch(() => console.log("Usuario o contraseña invalida"));
+  };
+};
+
 export const loginGoogle = () => {
   return (dispatch) => {
     const auth = getAuth();
@@ -66,5 +101,3 @@ export const loginFacebook = () => {
       });
   };
 };
-//holi
-//perrra de miieirda

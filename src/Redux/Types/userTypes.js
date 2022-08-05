@@ -1,4 +1,4 @@
 export const userTypes = {
-    login: "[USER] login",
-    register: "[USER] register"
-}
+  login: "[USER] login",
+  register: "[USER] register",
+};
