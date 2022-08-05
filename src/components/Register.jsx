@@ -14,11 +14,11 @@ const Register = () => {
                 <input type="email" placeholder='Email' className='w-full p-2 pl-5 mt-3 text-white rounded-full outline-none bg-secondary md:h-14 md:text-lg' />
                 <input type="number" placeholder='Phone number' className='w-full p-2 pl-5 mt-3 text-white rounded-full outline-none bg-secondary md:h-14 md:text-lg' />
                 <input type="password" placeholder='Password' className='w-full p-2 pl-5 mt-3 text-white rounded-full outline-none bg-secondary md:h-14 md:text-lg' />
-                <div className='flex items-center w-full h-6 gap-3 mt-1 ml-8'>
+                <div className='flex items-center w-full h-6 gap-3 mt-1 mb-8 ml-8'>
                     <label className='text-white text-[10px] font-thin mt-2 md:text-sm cursor-pointer'>I have read the security policy</label>
-                    <input type="radio" name="" id="" className='mt-2' />
+                    <input type="radio" className='mt-2' />
                 </div>
-                <div className="flex justify-center w-full mt-8">
+                <div className="flex justify-center w-full">
                     <Button text={"Registration"} />
                 </div>
 
