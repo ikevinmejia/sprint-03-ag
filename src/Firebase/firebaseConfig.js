@@ -16,3 +16,4 @@ const google = new GoogleAuthProvider();
 const facebook = new FacebookAuthProvider();
 
 export { app, google, facebook };
+//puto el que lo lea :v
