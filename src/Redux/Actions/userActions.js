@@ -15,7 +15,7 @@ const loginSync = (user) => ({
   payload: user,
 });
 
-export const loginGoogle = () => {
+export const loginGooglee = () => {
   return (dispatch) => {
     const auth = getAuth();
     signInWithPopup(auth, google)
