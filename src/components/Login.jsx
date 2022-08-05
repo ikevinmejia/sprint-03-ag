@@ -1,18 +1,32 @@
 import React from 'react'
+import { useForm } from '../Hooks/useForm'
 
 
 
 const Login = () => {
+    const {formValue, handleInputChangeName, reset} = useForm({
+        email: '',
+        password: ''
+    })
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formValue);
+        /* dispatch(LoginWithEmail(formValues.email, formValues.password)) */
+        reset()
+    }
+
     return (
         <div className='relative flex flex-col items-center justify-center h-screen'>
             <div className='flex items-center justify-center'>
                 <img src={require('../img/favicon.png')} alt="" />
             </div>
 
-            <form className='flex flex-col items-center justify-center w-full px-5 mt-6'>
+            <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-full px-5 mt-6'>
                 <h1 className='text-2xl text-white'>Sign In</h1>
-                <input type="email" placeholder='Email' className='w-full p-2 pl-5 mt-4 text-white rounded-full outline-none bg-secondary' />
-                <input type="password" placeholder='Password' className='w-full p-2 pl-5 mt-3 text-white rounded-full outline-none bg-secondary' />
+                <input onChange={handleInputChangeName} name="email" type="email" placeholder='Email' className='w-full p-2 pl-5 mt-4 text-white rounded-full outline-none bg-secondary' />
+                <input onChange={handleInputChangeName} name="password" type="password" placeholder='Password' className='w-full p-2 pl-5 mt-3 text-white rounded-full outline-none bg-secondary' />
                 <input type="submit" value="Sing In" className='w-full p-3 mt-8 text-white rounded-full cursor-pointer bg-primary' />
                 <p className='text-white text-[10px] font-thin mt-2 cursor-pointer'>Forgot Password ?</p>
             </form>

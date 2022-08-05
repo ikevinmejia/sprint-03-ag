@@ -21,7 +21,6 @@ const PhoneAuthen = () => {
         <div className='w-full mt-36 px-5 justify-center flex max-w-sm'>
             <Button />
         </div>
-        
     </div>
   )
 }
