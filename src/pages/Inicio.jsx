@@ -9,7 +9,7 @@ function Inicio() {
     setInicio(true);
     setTimeout(() => {
       setInicio(false);
-    }, 3000);
+    }, 1500);
   }, []);
 
   return (
