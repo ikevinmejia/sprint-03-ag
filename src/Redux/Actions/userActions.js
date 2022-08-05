@@ -6,8 +6,9 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
+  FacebookAuthProvider,
 } from "firebase/auth";
-import { google } from "../../Firebase/firebaseConfig";
+import { facebook, google } from "../../Firebase/firebaseConfig";
 
 const loginSync = (user) => ({
   type: userTypes.login,
@@ -42,5 +43,26 @@ const loginProvider = (displayName, email, photoURL) => {
       email,
       photoURL,
     },
+  };
+};
+
+export const loginFacebook = () => {
+  return (dispatch) => {
+    const auth = getAuth();
+    signInWithPopup(auth, facebook)
+      .then(({ user: { displayName, email, photoURL } }) =>
+        dispatch(loginProvider(displayName, email, photoURL))
+      )
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+
+        // ...
+      });
   };
 };

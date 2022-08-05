@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../Hooks/useForm'
 import { useDispatch } from "react-redux";
-import { loginGoogle } from "../Redux/Actions/userActions";
+import { loginFacebook, loginGoogle } from "../Redux/Actions/userActions";
 
 
 const Login = () => {
@@ -21,6 +21,10 @@ const Login = () => {
 
     const handleGoogle = () => {
         dispatch(loginGoogle())
+    }
+
+    const handleFacebook = () => {
+        dispatch(loginFacebook())
     }
 
     return (
@@ -44,7 +48,7 @@ const Login = () => {
                         <img src={require("../img/google.png")} alt="" className='mr-2 cursor-pointer md:w-8' onClick={handleGoogle} />
                     </div>
                     <div className='w-2/4 '>
-                        <img src={require("../img/facebook.png")} alt="" className='ml-2 cursor-pointer md:w-8' />
+                        <img src={require("../img/facebook.png")} alt="" className='ml-2 cursor-pointer md:w-8' onClick={handleFacebook} />
                     </div>
                 </div>
             </div>
