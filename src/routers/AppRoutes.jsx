@@ -8,6 +8,8 @@ import Inicio from "../pages/Inicio";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import PhoneAuthen from "../containers/PhoneAuthen";
+import GetSubscription from "../pages/GetSubscription";
+import Home from "../pages/Home";
 
 function AppRoutes() {
   return (
@@ -86,9 +88,10 @@ function AppRoutes() {
             path="/getGener"
             element={<GetGenerUser title={"Choose gender"} goTo="/getGener" />}
           />
+          <Route path="/subscription" element={<GetSubscription />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </ContextProvider>
-        
     </BrowserRouter>
   );
 }
