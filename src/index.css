@@ -19,3 +19,11 @@
     margin: 0;
   }
 }
+
+input[type="radio"] {
+  display: none;
+}
+
+input:checked + label {
+  background-color: aqua;
+}
