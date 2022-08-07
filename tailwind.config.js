@@ -1,9 +1,5 @@
 module.exports = {
-  content: [
-    "index.html",
-    "./src/**/*.{js,jsx,ts,tsx,vue,html}",
-    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["index.html", "./src/**/*.{js,jsx,ts,tsx,vue,html}"],
   theme: {
     extend: {
       backgroundColor: {
@@ -34,5 +30,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [],
 };

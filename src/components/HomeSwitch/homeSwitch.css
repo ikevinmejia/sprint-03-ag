@@ -1,0 +1,71 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 135px;
+  height: 48px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2e3562;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 11px;
+  bottom: 11px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2be7e8;
+}
+
+input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px #2be7e8;
+  box-shadow: 0 0 1px #2be7e8;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(85px);
+}
+
+/*------ ADDED CSS ---------*/
+.slider:after {
+  content: "Discover";
+  color: white;
+  display: block;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  font-size: 14px;
+}
+
+input:checked + .slider:after {
+  content: "My workouts";
+}
+
+/*--------- END --------*/
