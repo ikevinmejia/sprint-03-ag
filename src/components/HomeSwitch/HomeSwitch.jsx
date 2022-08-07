@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { Context } from "../../context/ContextProvider";
 import "./homeSwitch.css";
 
 function HomeSwitch() {
-  const [checked, setChecked] = useState(false);
+  const { setIsSelected, isSelected } = useContext(Context);
 
   const handleOnChange = () => {
-    setChecked(!checked);
-    console.log(checked);
+    setIsSelected(!isSelected);
+    console.log(isSelected);
   };
 
   return (
     <div className="flex justify-center w-full mt-3">
       <label className="switch">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={handleOnChange} />
         <span className="slider"></span>
       </label>
     </div>
