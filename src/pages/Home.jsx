@@ -16,7 +16,6 @@ function Home() {
       <HomeHeader />
       <SliderHome />
       <HomeSwitch />
-      <Categories />
       <div className="flex flex-col w-full max-w-xl gap-4 mx-auto mt-11">
         {isSelected ? (
           <div className="text-center">
@@ -27,7 +26,10 @@ function Home() {
             />
           </div>
         ) : (
-          <HomeCard />
+          <>
+            <Categories />
+            <HomeCard />
+          </>
         )}
       </div>
 
