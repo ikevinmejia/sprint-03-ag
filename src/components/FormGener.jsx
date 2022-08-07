@@ -15,7 +15,7 @@ function FormGener() {
 
   const handleOnClick = ({ target }) => {
     target.nodeName === "svg" && setGener(target.id);
-    navigate("/");
+    navigate("/Home");
   };
 
   const handleOnSubmit = (e) => {
@@ -27,26 +27,26 @@ function FormGener() {
       onSubmit={(e) => handleOnSubmit(e)}
       className="mx-auto flex h-[60vh] w-full max-w-sm flex-col items-center justify-start  px-3"
     >
-      <div className="flex flex-col items-center w-full h-full justify-evenly">
+      <div className="flex h-full w-full flex-col items-center justify-evenly">
         <div className="">
           <button
             onClick={(e) => handleOnClick(e)}
-            className="transition-all duration-700 border rounded-3xl border-secondary hover:bg-secondary"
+            className="rounded-3xl border border-secondary transition-all duration-700 hover:bg-secondary"
           >
             <IoMale style={styles} color="#2be7e8" id="male" />
           </button>
-          <p className="w-full text-lg font-medium text-center text-white">
+          <p className="w-full text-center text-lg font-medium text-white">
             Male
           </p>
         </div>
         <div>
           <button
             onClick={(e) => handleOnClick(e)}
-            className="transition-all duration-700 border rounded-3xl border-secondary hover:bg-secondary "
+            className="rounded-3xl border border-secondary transition-all duration-700 hover:bg-secondary "
           >
             <IoFemale style={styles} color="#2be7e8" id="female" />
           </button>
-          <p className="w-full text-lg font-medium text-center text-white">
+          <p className="w-full text-center text-lg font-medium text-white">
             Female
           </p>
         </div>
