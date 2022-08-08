@@ -16,6 +16,8 @@ function AppRoutes() {
     <BrowserRouter>
       <ContextProvider>
         <Routes>
+
+          //Rutas privadas
           <Route path="/" element={<Inicio />} />
           <Route
             path="/b2"
@@ -47,6 +49,9 @@ function AppRoutes() {
           <Route path="/login" element={<Login />} />
           <Route path="/Authentification" element={<PhoneAuthen />} />
           <Route path="/register" element={<Register />} />
+
+
+            //Rutas publicas
 
           <Route
             path="/getHeight"
