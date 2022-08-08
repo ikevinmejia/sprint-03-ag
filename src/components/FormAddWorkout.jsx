@@ -1,8 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Context } from "../context/ContextProvider";
 import { useForm } from "../Hooks/useForm";
+import { useDispatch } from "react-redux";
+import { actionNewWorkout } from "../Redux/Actions/actionNewWorkout";
 
 function FormAddWorkout() {
+  const dispatch = useDispatch();
+
   const { handleModal } = useContext(Context);
   const { formValue, handleInputChangeName, reset } = useForm({
     kindWorkout: "",
@@ -15,6 +19,7 @@ function FormAddWorkout() {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     console.log(formValue);
+    dispatch(actionNewWorkout(formValue));
     reset();
     handleModal();
   };
