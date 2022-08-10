@@ -8,6 +8,7 @@ function FormAddWorkout() {
   const dispatch = useDispatch();
 
   const { handleModal } = useContext(Context);
+
   const { formValue, handleInputChangeName, reset } = useForm({
     kindWorkout: "",
     titleWorkout: "",
