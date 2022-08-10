@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "env": "^0.0.2",
+    "env-install": "^1.0.0",
     "firebase": "^9.9.2",
     "flowbite": "^1.5.1",
     "flowbite-react": "^0.1.5",
