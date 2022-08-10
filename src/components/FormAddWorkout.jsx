@@ -1,8 +1,29 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Context } from "../context/ContextProvider";
+import { useForm } from "../Hooks/useForm";
+import { useDispatch } from "react-redux";
+import { actionNewWorkout } from "../Redux/Actions/actionNewWorkout";
 
 function FormAddWorkout() {
+  const dispatch = useDispatch();
+
   const { handleModal } = useContext(Context);
+
+  const { formValue, handleInputChangeName, reset } = useForm({
+    kindWorkout: "",
+    titleWorkout: "",
+    time: "",
+    file: "",
+    description: "",
+  });
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValue);
+    dispatch(actionNewWorkout(formValue));
+    reset();
+    handleModal();
+  };
 
   return (
     <>
@@ -42,7 +63,7 @@ function FormAddWorkout() {
               <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                 Create new workout
               </h3>
-              <form className="space-y-6" action="#">
+              <form className="space-y-6" onSubmit={(e) => handleOnSubmit(e)}>
                 <div>
                   <label
                     htmlFor="kindWorkout"
@@ -56,6 +77,7 @@ function FormAddWorkout() {
                     id="kindWorkout"
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-secondary outline-none focus:border-primary"
                     placeholder="triceps, back..."
+                    onChange={handleInputChangeName}
                     required
                   />
                 </div>
@@ -72,6 +94,7 @@ function FormAddWorkout() {
                     id="titleWorkout"
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-secondary outline-none focus:border-primary"
                     placeholder="Up and down workout"
+                    onChange={handleInputChangeName}
                     required
                   />
                 </div>
@@ -89,7 +112,23 @@ function FormAddWorkout() {
                     id="time"
                     placeholder="23 min"
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-secondary outline-none focus:border-primary"
+                    onChange={handleInputChangeName}
                     required
+                  />
+                </div>
+                <div>
+                  <label
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    htmlFor="files"
+                  >
+                    Upload file
+                  </label>
+                  <input
+                    className="block w-full text-sm border border-gray-300 rounded-lg cursor-pointer bg-gray-50 text-secondary file:mr-4 file:cursor-pointer file:border-0 file:bg-mainBgColor file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-gray-700 focus:outline-none"
+                    id="files"
+                    type="file"
+                    name="file"
+                    onChange={handleInputChangeName}
                   />
                 </div>
                 <div>
@@ -104,6 +143,8 @@ function FormAddWorkout() {
                     rows="4"
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-secondary outline-none focus:border-primary "
                     placeholder="Short description"
+                    name="description"
+                    onChange={handleInputChangeName}
                   ></textarea>
                 </div>
                 <div className="flex justify-between">
