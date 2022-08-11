@@ -1,29 +1,57 @@
-# template-vite-react-tailwind-v3
+# Sprint 03 reto 02 - Buffalo
 
-- **template of:** vite + react
-- **tailwindcss:** v3.x
+Aplicación con topico de gimnasio, metodología de diseño mobile firts, con uso de react, vite, tailwind, firebase, crud y otras tecnologías.
 
-## Started
-```bash
-yarn
-# or `npm install`
+## Comenzando 🚀
+
+Aplicación construida con VITE.
+
+Clic [**aquí**](https://sprint03-agg.web.app/) para ver el despliegue.
+
+### Pre-requisitos 📋
+
+Para adquirir el código fuente debe descargar los archivos o hacer un git clone.
+
+### Instalación 🔧
+
+Intalar paquetes
+
+```
+npm install
 ```
 
----
-## Develop
-```bash
-yarn dev
-# or `npm run dev`
+Ejecutar servidor de desarrollo
+
+```
+npm run dev
 ```
 
----
-## Build
-```bash
-yarn build
-# or `npm run build`
+## Despliegue 📦
+
+Ejecutar el comando
+
+```
+npm run build
 ```
 
----
-<p align="center">
-<img src="./powered-by-vitawind-bright.png">
-</p>
+## Construido con 🛠️
+
+- [REACT](https://es.reactjs.org/) - Librería web usado
+- [VITE](https://vitejs.dev/) - Empaquetador
+- [Tailwind](https://tailwindcss.com/) - Marco de trabajo CSS
+- [POSTCSS](https://postcss.org/) - Post procesador CSS
+- [Firebase](https://firebase.google.com/) - Plataforma de desarrollo
+
+## Versionado 📌
+
+Usamos [Git](https://git-scm.com/) para el versionado. Para todas las versiones disponibles.
+
+## Autores ✒️
+
+- **Felipe Jaramillo** - [Felipe852](https://github.com/Felipe852)
+- **Kevin Mejia** - [ikevinmejia](https://github.com/ikevinmejia)
+- **Nuthelk Molina** - [nuthelk](https://github.com/nuthelk)
+
+## Licencia 📄
+
+Este proyecto está bajo la Licencia MIT.
