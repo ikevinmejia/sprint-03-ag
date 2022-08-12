@@ -1,4 +1,6 @@
-import { userTypes } from "../Types/userTypes";
+import {
+  userTypes
+} from "../Types/userTypes";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -8,7 +10,10 @@ import {
   updateProfile,
   FacebookAuthProvider,
 } from "firebase/auth";
-import { facebook, google } from "../../Firebase/firebaseConfig";
+import {
+  facebook,
+  google
+} from "../../Firebase/firebaseConfig";
 
 const loginSync = (user) => ({
   type: userTypes.login,
@@ -20,8 +25,15 @@ export const registerWithEmail = (email, password, name, phoneNumber) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password, phoneNumber)
       .then(async () => {
-        await updateProfile(auth.currentUser, { displayName: name });
-        dispatch(registerSync({ email, password, name, phoneNumber }));
+        await updateProfile(auth.currentUser, {
+          displayName: name
+        });
+        dispatch(registerSync({
+          email,
+          password,
+          name,
+          phoneNumber
+        }));
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -43,8 +55,17 @@ export const LoginWithEmail = (email, password) => {
   return (dispatch) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then(({ user: { displayName, email } }) =>
-        dispatch(loginSync({ displayName, email, password }))
+      .then(({
+          user: {
+            displayName,
+            email
+          }
+        }) =>
+        dispatch(loginSync({
+          displayName,
+          email,
+          password
+        }))
       )
       .catch(() => console.log("Usuario o contraseña invalida"));
   };
@@ -54,7 +75,13 @@ export const loginGoogle = () => {
   return (dispatch) => {
     const auth = getAuth();
     signInWithPopup(auth, google)
-      .then(({ user: { displayName, email, photoURL } }) =>
+      .then(({
+          user: {
+            displayName,
+            email,
+            photoURL
+          }
+        }) =>
         dispatch(loginProvider(displayName, email, photoURL))
       )
       .catch((error) => {
@@ -85,7 +112,13 @@ export const loginFacebook = () => {
   return (dispatch) => {
     const auth = getAuth();
     signInWithPopup(auth, facebook)
-      .then(({ user: { displayName, email, photoURL } }) =>
+      .then(({
+          user: {
+            displayName,
+            email,
+            photoURL
+          }
+        }) =>
         dispatch(loginProvider(displayName, email, photoURL))
       )
       .catch((error) => {
