@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { IoMale, IoFemale } from "react-icons/io5";
 import { Context } from "../context/ContextProvider";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addWhag } from "../Redux/Actions/userActions";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../Firebase/firebaseConfig";
 
 const styles = {
   width: "150px",
@@ -14,6 +16,7 @@ const styles = {
 function FormGener() {
   const dispatch = useDispatch();
   const { setGener, gener, dataFormWHA } = useContext(Context);
+  const dataReduxUser = useSelector((state) => state.login);
 
   const navigate = useNavigate();
 
@@ -30,12 +33,23 @@ function FormGener() {
     }
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     if (gener != undefined) {
       dispatch(addWhag(whag));
-      console.log(gener);
-      console.log(whag);
+
+      const data = {
+        displayName: dataReduxUser.displayName,
+        email: dataReduxUser.email,
+        photoURL: dataReduxUser.photoURL,
+        uid: dataReduxUser.uid,
+        weight: whag.weight,
+        height: whag.height,
+        age: whag.age,
+        gener: whag.gener,
+      };
+
+      await setDoc(doc(db, "users", dataReduxUser.uid), data);
       navigate("/Home");
     }
   };

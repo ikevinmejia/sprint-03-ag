@@ -1,6 +1,13 @@
-import { initializeApp } from "firebase/app";
-import { FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore } from "@firebase/firestore";
+import {
+  initializeApp
+} from "firebase/app";
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider
+} from "firebase/auth";
+import {
+  getFirestore
+} from "@firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APIKEY,
@@ -15,7 +22,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const google = new GoogleAuthProvider();
 const facebook = new FacebookAuthProvider();
-const bd = getFirestore(app);
+const db = getFirestore(app);
 
-export { app, google, facebook };
+export {
+  app,
+  google,
+  facebook,
+  db
+};
 //puto el que lo lea :v
