@@ -23,7 +23,9 @@ const loginSync = (user) => ({
 export const registerWithEmail = (email, password, name, phoneNumber) => {
   return (dispatch) => {
     const auth = getAuth();
+    console.log(auth);
     createUserWithEmailAndPassword(auth, email, password, phoneNumber)
+
       .then(async () => {
         await updateProfile(auth.currentUser, {
           displayName: name
@@ -32,8 +34,10 @@ export const registerWithEmail = (email, password, name, phoneNumber) => {
           email,
           password,
           name,
-          phoneNumber
+          phoneNumber,
+          uid: auth.currentUser.uid
         }));
+
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -80,10 +84,10 @@ export const loginGoogle = () => {
             displayName,
             email,
             photoURL,
-            uuid
+            uid
           }
         }) =>
-        dispatch(loginProvider(displayName, email, photoURL, uuid))
+        dispatch(loginProvider(displayName, email, photoURL, uid))
       )
       .catch((error) => {
         // Handle Errors here.
@@ -98,14 +102,14 @@ export const loginGoogle = () => {
   };
 };
 
-const loginProvider = (displayName, email, photoURL, uuid) => {
+const loginProvider = (displayName, email, photoURL, uid) => {
   return {
     type: userTypes.login,
     payload: {
       displayName,
       email,
       photoURL,
-      uuid
+      uid
     },
   };
 };
@@ -118,10 +122,11 @@ export const loginFacebook = () => {
           user: {
             displayName,
             email,
-            photoURL
+            photoURL,
+            uid
           }
         }) =>
-        dispatch(loginProvider(displayName, email, photoURL))
+        dispatch(loginProvider(displayName, email, photoURL, uid))
       )
       .catch((error) => {
         // Handle Errors here.
@@ -134,5 +139,25 @@ export const loginFacebook = () => {
 
         // ...
       });
+  };
+};
+
+
+/* action add WHAG */
+
+export const addWhag = ({
+  weight,
+  height,
+  age,
+  gener
+}) => {
+  return {
+    type: userTypes.addWhag,
+    payload: {
+      weight,
+      height,
+      age,
+      gener,
+    },
   };
 };
