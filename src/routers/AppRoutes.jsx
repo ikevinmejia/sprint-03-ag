@@ -14,6 +14,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { PrivateRouter } from "./PrivateRouter";
 import { PublicRouter } from "./PublicRouter";
 
+
 function AppRoutes() {
 
   const [auth, setAuth] = useState(false)
@@ -69,7 +70,6 @@ function AppRoutes() {
 
           <Route path="/login" element={<PublicRouter isAutentication={auth}><Login /></PublicRouter>} />
           <Route path="/register" element={<PublicRouter isAutentication={auth}><Register /></PublicRouter>} />
-
 
             //Rutas privadas
           <Route path="/Authentification" element={<PhoneAuthen />} />

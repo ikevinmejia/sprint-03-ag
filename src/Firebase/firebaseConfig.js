@@ -17,5 +17,5 @@ const google = new GoogleAuthProvider();
 const facebook = new FacebookAuthProvider();
 const bd = getFirestore(app);
 
-export { app, google, facebook };
+export { app, google, facebook, bd };
 //puto el que lo lea :v
