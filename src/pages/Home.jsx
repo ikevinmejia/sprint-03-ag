@@ -32,7 +32,13 @@ function Home() {
 
               {dataForm &&
                 dataForm.map((item, index) => (
-                  <HomeCard key={index} img={item.file} />
+                  <HomeCard
+                    key={index}
+                    img={item.file}
+                    time={item.time}
+                    description={item.description}
+                    title={item.titleWorkout}
+                  />
                 ))}
 
               <Button

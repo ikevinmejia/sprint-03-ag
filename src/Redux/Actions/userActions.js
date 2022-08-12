@@ -79,10 +79,11 @@ export const loginGoogle = () => {
           user: {
             displayName,
             email,
-            photoURL
+            photoURL,
+            uuid
           }
         }) =>
-        dispatch(loginProvider(displayName, email, photoURL))
+        dispatch(loginProvider(displayName, email, photoURL, uuid))
       )
       .catch((error) => {
         // Handle Errors here.
@@ -97,13 +98,14 @@ export const loginGoogle = () => {
   };
 };
 
-const loginProvider = (displayName, email, photoURL) => {
+const loginProvider = (displayName, email, photoURL, uuid) => {
   return {
     type: userTypes.login,
     payload: {
       displayName,
       email,
       photoURL,
+      uuid
     },
   };
 };
