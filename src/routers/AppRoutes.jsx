@@ -16,105 +16,149 @@ import { PublicRouter } from "./PublicRouter";
 
 
 function AppRoutes() {
-
-  const [auth, setAuth] = useState(false)
+  const [auth, setAuth] = useState(false);
 
   useEffect(() => {
     const auth2 = getAuth();
     onAuthStateChanged(auth2, (user) => {
       if (user?.uid) {
-        console.log(user);
+        // console.log(user);
         // Posibilidad de recuperar la info luego de que se recargue la web
-        setAuth(true)
+        setAuth(true);
       } else {
-        setAuth(false)
+        setAuth(false);
       }
-    })
-  }, [auth])
-
-
+    });
+  }, [auth]);
 
   return (
     <BrowserRouter>
       <ContextProvider>
         <Routes>
-
           //Rutas publicas
-          <Route path="/" element={<PublicRouter isAutentication={auth}><Inicio /></PublicRouter>} />
+          <Route
+            path="/"
+            element={
+              <PublicRouter isAutentication={auth}>
+                <Inicio />
+              </PublicRouter>
+            }
+          />
           <Route
             path="/b2"
-            element={<PublicRouter isAutentication={auth}>
-              <Introduce
-                title={"Discipline"}
-                text={"Develop discipline in yourself train every day"}
-                textButton={"Next"}
-                imgMobile={"bg-b2"}
-                imgLarge={"md:bg-b2f"}
-                goTo="/b3"
-              /> </PublicRouter>
+            element={
+              <PublicRouter isAutentication={auth}>
+                <Introduce
+                  title={"Discipline"}
+                  text={"Develop discipline in yourself train every day"}
+                  textButton={"Next"}
+                  imgMobile={"bg-b2"}
+                  imgLarge={"md:bg-b2f"}
+                  goTo="/b3"
+                />{" "}
+              </PublicRouter>
             }
           />
           <Route
             path="/b3"
-            element={<PublicRouter isAutentication={auth}>
-              <Introduce
-                title={"Character"}
-                text={"Cultivate in you an iron character for training"}
-                textButton={"Registration"}
-                imgMobile={"bg-b3"}
-                imgLarge={"md:bg-b3f"}
-                goTo="/login"
-              /></PublicRouter>
+            element={
+              <PublicRouter isAutentication={auth}>
+                <Introduce
+                  title={"Character"}
+                  text={"Cultivate in you an iron character for training"}
+                  textButton={"Registration"}
+                  imgMobile={"bg-b3"}
+                  imgLarge={"md:bg-b3f"}
+                  goTo="/login"
+                />
+              </PublicRouter>
             }
           />
-
-          <Route path="/login" element={<PublicRouter isAutentication={auth}><Login /></PublicRouter>} />
-          <Route path="/register" element={<PublicRouter isAutentication={auth}><Register /></PublicRouter>} />
-
-            //Rutas privadas
+          <Route
+            path="/login"
+            element={
+              <PublicRouter isAutentication={auth}>
+                <Login />
+              </PublicRouter>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <PublicRouter isAutentication={auth}>
+                <Register />
+              </PublicRouter>
+            }
+          />
+          //Rutas privadas
           <Route path="/Authentification" element={<PhoneAuthen />} />
           <Route
             path="/getHeight"
-            element={<PrivateRouter isAutentication={auth}>
-              <GetInfoUser
-                dataInput={"height"}
-                title={"Enter your height"}
-                placeholder={"160"}
-                textLabel={"Cm"}
-                goTo="/getWeight"
-              /></PrivateRouter>
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <GetInfoUser
+                  dataInput={"height"}
+                  title={"Enter your height"}
+                  placeholder={"160"}
+                  textLabel={"Cm"}
+                  goTo="/getWeight"
+                />
+              </PrivateRouter>
             }
           />
           <Route
             path="/getWeight"
             element={
-              <PrivateRouter isAutentication={auth}><GetInfoUser
-                dataInput={"weight"}
-                title={"Enter your weight"}
-                placeholder={"73"}
-                textLabel={"Kg"}
-                goTo="/getAge"
-              /></PrivateRouter>
+              <PrivateRouter isAutentication={auth}>
+                <GetInfoUser
+                  dataInput={"weight"}
+                  title={"Enter your weight"}
+                  placeholder={"73"}
+                  textLabel={"Kg"}
+                  goTo="/getAge"
+                />
+              </PrivateRouter>
             }
           />
           <Route
             path="/getAge"
             element={
-              <PrivateRouter isAutentication={auth}> <GetInfoUser
-                dataInput={"age"}
-                title={"Enter your age"}
-                placeholder={"24"}
-                textLabel={""}
-                goTo="/getGener"
-              /></PrivateRouter>
+              <PrivateRouter isAutentication={auth}>
+                {" "}
+                <GetInfoUser
+                  dataInput={"age"}
+                  title={"Enter your age"}
+                  placeholder={"24"}
+                  textLabel={""}
+                  goTo="/getGener"
+                />
+              </PrivateRouter>
             }
           />
           <Route
             path="/getGener"
-            element={<PrivateRouter isAutentication={auth}><GetGenerUser title={"Choose gender"} goTo="/getGener" /></PrivateRouter>}
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <GetGenerUser title={"Choose gender"} goTo="/getGener" />
+              </PrivateRouter>
+            }
           />
-          <Route path="/subscription" element={<PrivateRouter isAutentication={auth}><GetSubscription /></PrivateRouter>} />
-          <Route path="/home" element={<PrivateRouter isAutentication={auth}><Home /></PrivateRouter>} />
+          <Route
+            path="/subscription"
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <GetSubscription />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <Home />
+              </PrivateRouter>
+            }
+          />
         </Routes>
       </ContextProvider>
     </BrowserRouter>
