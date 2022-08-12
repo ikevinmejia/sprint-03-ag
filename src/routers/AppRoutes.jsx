@@ -15,6 +15,7 @@ import { PrivateRouter } from "./PrivateRouter";
 import { PublicRouter } from "./PublicRouter";
 import VideoTraining from "../pages/VideoTraining";
 import Videos from "../pages/Videos";
+import Notifications from "../pages/Notifications";
 
 function AppRoutes() {
   const [auth, setAuth] = useState(false);
@@ -162,6 +163,7 @@ function AppRoutes() {
           />
           <Route path="/VideoTraining" element={<VideoTraining />} />
           <Route path="/videos" element={<Videos />} />
+          <Route path="/Notifications" element={<Notifications />} />
         </Routes>
       </ContextProvider>
     </BrowserRouter>
