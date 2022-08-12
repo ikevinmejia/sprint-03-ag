@@ -13,6 +13,8 @@ import Home from "../pages/Home";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { PrivateRouter } from "./PrivateRouter";
 import { PublicRouter } from "./PublicRouter";
+import VideoTraining from "../pages/VideoTraining";
+import Videos from "../pages/Videos";
 
 function AppRoutes() {
   const [auth, setAuth] = useState(false);
@@ -158,6 +160,8 @@ function AppRoutes() {
               </PrivateRouter>
             }
           />
+          <Route path="/VideoTraining" element={<VideoTraining />} />
+          <Route path="/videos" element={<Videos />} />
         </Routes>
       </ContextProvider>
     </BrowserRouter>
