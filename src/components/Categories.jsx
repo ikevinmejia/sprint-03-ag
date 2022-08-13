@@ -1,28 +1,15 @@
 import React from "react";
 
-const Categories = () => {
+const Categories = ({ category, event, idb }) => {
   return (
     <>
-      <div className="flex gap-2 mx-5 text-sm text-white md:justify-center">
-        <button className="w-1/5 max-w-[100px] rounded-2xl bg-[#2E3562] focus:bg-cyan-400">
-          All body
-        </button>
-        <button className="w-1/5 max-w-[100px] rounded-2xl bg-[#2E3562] focus:bg-cyan-400">
-          Triceps
-        </button>
-        <button className="w-1/5 max-w-[100px] rounded-2xl bg-[#2E3562] focus:bg-cyan-400">
-          Biceps
-        </button>
-        <button className="w-1/5 max-w-[100px] rounded-2xl bg-[#2E3562] focus:bg-cyan-400">
-          Breast
-        </button>
-        <button className="w-1/5 max-w-[100px] rounded-2xl bg-[#2E3562] focus:bg-cyan-400">
-          Back
-        </button>
-        <button className="w-1/5 max-w-[100px] rounded-2xl bg-[#2E3562] focus:bg-cyan-400">
-          Legs
-        </button>
-      </div>
+      <button
+        id={idb}
+        onClick={event}
+        className="w-1/5 max-w-[100px] rounded-2xl bg-[#2E3562] focus:bg-cyan-400"
+      >
+        {category}
+      </button>
     </>
   );
 };

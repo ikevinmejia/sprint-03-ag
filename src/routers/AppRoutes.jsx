@@ -13,6 +13,9 @@ import Home from "../pages/Home";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { PrivateRouter } from "./PrivateRouter";
 import { PublicRouter } from "./PublicRouter";
+import VideoTraining from "../pages/VideoTraining";
+import Videos from "../pages/Videos";
+import Notifications from "../pages/Notifications";
 
 
 function AppRoutes() {
@@ -159,6 +162,9 @@ function AppRoutes() {
               </PrivateRouter>
             }
           />
+          <Route path="/VideoTraining" element={<VideoTraining />} />
+          <Route path="/videos" element={<Videos />} />
+          <Route path="/Notifications" element={<Notifications />} />
         </Routes>
       </ContextProvider>
     </BrowserRouter>
