@@ -47,6 +47,7 @@ function FormGener() {
         height: whag.height,
         age: whag.age,
         gener: whag.gener,
+        workouts: [],
       };
 
       await setDoc(doc(db, "users", dataReduxUser.uid), data);
