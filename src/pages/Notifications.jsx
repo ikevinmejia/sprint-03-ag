@@ -5,7 +5,7 @@ import TitleAndBack from "../components/TitleAndBack";
 const Notifications = () => {
   return (
     <div className="container m-0">
-      <TitleAndBack />
+      <TitleAndBack title={"Notification"} />
       <div className="w-full gap-5 px-5 font-light text-white ">
         <div className="mx-auto mt-10 flex h-12 max-w-lg items-center rounded-2xl bg-secondary pl-2">
           <div className="w-1/3 md:ml-2">

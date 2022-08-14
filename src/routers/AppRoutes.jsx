@@ -17,6 +17,8 @@ import VideoTraining from "../pages/VideoTraining";
 import Videos from "../pages/Videos";
 import Notifications from "../pages/Notifications";
 import ResumenVideoTraining from "../pages/ResumenVideoTraining";
+import WorkoutAdded from "../pages/WorkoutAdded";
+import Faq from "../pages/Faq";
 
 function AppRoutes() {
   const [auth, setAuth] = useState(false);
@@ -165,6 +167,8 @@ function AppRoutes() {
           <Route path="/VideoTraining" element={<VideoTraining />} />
           <Route path="/videos" element={<Videos />} />
           <Route path="/Notifications" element={<Notifications />} />
+          <Route path="/WorkoutAdded" element={<WorkoutAdded />} />
+          <Route path="/FAQ" element={<Faq />} />
           <Route
             path="/ResumenVideoTraining"
             element={<ResumenVideoTraining />}
