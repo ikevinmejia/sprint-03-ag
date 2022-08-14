@@ -1,30 +1,51 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../context/ContextProvider";
 import { useForm } from "../Hooks/useForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionNewWorkout } from "../Redux/Actions/actionNewWorkout";
+import { doc, setDoc, collection, updateDoc } from "firebase/firestore";
+import { db } from "../Firebase/firebaseConfig";
 
 function FormAddWorkout() {
   const dispatch = useDispatch();
-
+  const [imgWorkout, setImgWorkout] = useState('')
   const { handleModal } = useContext(Context);
+  const dataReduxUser = useSelector((state) => state.login);
+
 
   const { formValue, handleInputChangeName, reset } = useForm({
     kindWorkout: "",
     titleWorkout: "",
     time: "",
-    file: "",
     description: "",
   });
 
-  const handleOnSubmit = (e) => {
+  let widget_cloudinary = cloudinary.createUploadWidget({
+    cloudName: 'dzsd7vfjr',
+    uploadPreset: 'Workouts'
+  }, (error, result) => {
+    if (!error && result && result.event === "success") {
+      console.log('Done! Here is the image info: ', result.info);
+      let urlImgCloudinary = result.info.secure_url
+      setImgWorkout(urlImgCloudinary)
+      console.log(imgWorkout)
+    }
+  })
+
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(formValue);
+    formValue.file = imgWorkout
     dispatch(actionNewWorkout(formValue));
+    const user = doc(db, "users", dataReduxUser.uid)
+    await updateDoc(user, { workouts: formValue })
     reset();
     handleModal();
   };
 
+  const handleCloudinary = () => {
+    widget_cloudinary.open()
+  }
+  console.log(formValue);
   return (
     <>
       {/* <!-- Main modal --> */}
@@ -124,10 +145,12 @@ function FormAddWorkout() {
                     Upload file
                   </label>
                   <input
-                    className="block w-full text-sm border border-gray-300 rounded-lg cursor-pointer bg-gray-50 text-secondary file:mr-4 file:cursor-pointer file:border-0 file:bg-mainBgColor file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-gray-700 focus:outline-none"
+                    className="block w-full h-8 text-sm border border-gray-300 rounded-lg cursor-pointer bg-gray-50 text-secondary file:mr-4 file:cursor-pointer file:border-0 file:bg-mainBgColor file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-gray-700 focus:outline-none"
                     id="files"
-                    type="file"
+                    type="button"
                     name="file"
+                    value='Seleccionar archivo'
+                    onClick={() => handleCloudinary()}
                     onChange={handleInputChangeName}
                   />
                 </div>
