@@ -7,7 +7,6 @@ function HomeSwitch() {
 
   const handleOnChange = () => {
     setIsSelected(!isSelected);
-    console.log(isSelected);
   };
 
   return (

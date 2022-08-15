@@ -1,23 +1,18 @@
-import {
-    newWorkoutType
-} from "../Types/newWorkoutType";
+import { newWorkoutType } from "../Types/newWorkoutType";
 
 const initialState = {
-    dataForm: []
-}
+  dataForm: [],
+};
 
 export const reducerNewWorkout = (state = initialState, action) => {
-    console.log(state);
-    switch (action.type) {
-        case newWorkoutType.addEorkout:
+  switch (action.type) {
+    case newWorkoutType.addEorkout:
+      return {
+        ...state,
+        dataForm: [...state.dataForm, action.payload],
+      };
 
-            return {
-                ...state,
-                dataForm: [...state.dataForm, action.payload]
-
-            }
-
-            default:
-                return state;
-    }
-}
+    default:
+      return state;
+  }
+};

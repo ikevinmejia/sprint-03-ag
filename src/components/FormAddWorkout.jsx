@@ -3,12 +3,14 @@ import { Context } from "../context/ContextProvider";
 import { useForm } from "../Hooks/useForm";
 import { useDispatch, useSelector } from "react-redux";
 import { actionNewWorkout } from "../Redux/Actions/actionNewWorkout";
-import { doc, setDoc, collection, updateDoc } from "firebase/firestore";
+import { doc, setDoc, collection, updateDoc, getDoc, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../Firebase/firebaseConfig";
+import { useEffect } from "react";
 
 function FormAddWorkout() {
   const dispatch = useDispatch();
   const [imgWorkout, setImgWorkout] = useState('')
+  const [arreglo, setArreglo] = useState('')
   const { handleModal } = useContext(Context);
   const dataReduxUser = useSelector((state) => state.login);
 
@@ -28,24 +30,48 @@ function FormAddWorkout() {
       console.log('Done! Here is the image info: ', result.info);
       let urlImgCloudinary = result.info.secure_url
       setImgWorkout(urlImgCloudinary)
-      console.log(imgWorkout)
     }
   })
+
+  const data = async () => {
+    const datos = await getDocs(collection(db, "users"))
+    const perra = datos.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    for (let i = 0; i < perra.length; i++) {
+
+      if (perra[i].uid == dataReduxUser.uid) {
+        setArreglo(perra[i])
+      }
+    }
+
+  }
+
+  useEffect(() => {
+    data()
+  }, [])
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     formValue.file = imgWorkout
     dispatch(actionNewWorkout(formValue));
     const user = doc(db, "users", dataReduxUser.uid)
-    await updateDoc(user, { workouts: formValue })
+    let workouts = []
+    if (arreglo.workouts === null) {
+      workouts.push(formValue)
+
+    } else {
+      workouts = arreglo.workouts
+      workouts.push(formValue)
+    }
+
+    await updateDoc(user, { workouts: workouts })
     reset();
     handleModal();
   };
 
   const handleCloudinary = () => {
-    widget_cloudinary.open()
+    widget_cloudinary.open(), false
   }
-  console.log(formValue);
+
   return (
     <>
       {/* <!-- Main modal --> */}
