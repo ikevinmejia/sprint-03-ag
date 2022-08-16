@@ -21,6 +21,7 @@ import ResumenVideoTraining from "../pages/ResumenVideoTraining";
 import WorkoutAdded from "../pages/WorkoutAdded";
 import Faq from "../pages/Faq";
 
+
 function AppRoutes() {
   const [auth, setAuth] = useState(false);
 

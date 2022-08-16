@@ -1,15 +1,7 @@
-import {
-  applyMiddleware,
-  combineReducers,
-  createStore
-} from "redux";
-import {
-  userReducer
-} from "../Reducers/userReducer";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import { userReducer } from "../Reducers/userReducer";
 import thunk from "redux-thunk";
-import {
-  reducerNewWorkout
-} from "../Reducers/reducerNewWorkout";
+import { reducerNewWorkout } from "../Reducers/reducerNewWorkout";
 
 const composeEnhancers =
   (typeof window !== "undefined" &&
