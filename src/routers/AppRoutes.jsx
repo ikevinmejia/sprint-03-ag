@@ -16,6 +16,7 @@ import { PublicRouter } from "./PublicRouter";
 import VideoTraining from "../pages/VideoTraining";
 import Videos from "../pages/Videos";
 import Notifications from "../pages/Notifications";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 function AppRoutes() {
   const [auth, setAuth] = useState(false);
@@ -164,6 +165,7 @@ function AppRoutes() {
           <Route path="/VideoTraining" element={<VideoTraining />} />
           <Route path="/videos" element={<Videos />} />
           <Route path="/Notifications" element={<Notifications />} />
+          <Route path="/progress" element={<ProgressBar />} />
         </Routes>
       </ContextProvider>
     </BrowserRouter>

@@ -7,7 +7,6 @@ const initialState = {
 }
 
 export const reducerNewWorkout = (state = initialState, action) => {
-    console.log(state);
     switch (action.type) {
         case newWorkoutType.addEorkout:
 

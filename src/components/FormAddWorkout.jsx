@@ -3,6 +3,7 @@ import { Context } from "../context/ContextProvider";
 import { useForm } from "../Hooks/useForm";
 import { useDispatch } from "react-redux";
 import { actionNewWorkout } from "../Redux/Actions/actionNewWorkout";
+import { fileUpload } from "../helpers/fileUpload";
 
 function FormAddWorkout() {
   const dispatch = useDispatch();
@@ -17,10 +18,10 @@ function FormAddWorkout() {
     description: "",
   });
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(formValue);
     dispatch(actionNewWorkout(formValue));
+    const nuevoArchivo = await fileUpload(formValue.file);
     reset();
     handleModal();
   };
