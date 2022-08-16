@@ -1,16 +1,16 @@
 import React from "react";
-import TitleAndBack from "../components/TitleAndBack";
+import ExitInfo from "../components/ExitInfo";
 
 const WorkoutAdded = () => {
   return (
-    <div className="container m-0">
-      <TitleAndBack title={"Workouts added"} />
+    <div className="container mx-auto">
+      <ExitInfo rute={-1} text={"Workouts added"} estilos={"text-white"} />
       <img
         className="mx-auto mt-10 w-52 md:w-64"
         src="https://res.cloudinary.com/dnont3pur/image/upload/v1660448351/Sprint-3/Svg_uoikn4.png"
         alt="cosa"
       />
-      <div className="mx-auto mt-10 w-11/12 max-w-2xl text-xs text-white md:text-sm">
+      <div className="w-11/12 max-w-2xl mx-auto mt-10 text-xs text-white md:text-sm">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing

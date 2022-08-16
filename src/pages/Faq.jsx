@@ -1,11 +1,12 @@
 import React from "react";
 import DivDesp from "../components/DivDesp";
+import ExitInfo from "../components/ExitInfo";
 import TitleAndBack from "../components/TitleAndBack";
 
 const Faq = () => {
   return (
-    <div className="container m-0">
-      <TitleAndBack title={"FAQ"} />
+    <div className="container mx-auto">
+      <ExitInfo rute={-1} text={"FAQ"} estilos={"text-white"} />
       <DivDesp
         title={"Where do I start"}
         description={

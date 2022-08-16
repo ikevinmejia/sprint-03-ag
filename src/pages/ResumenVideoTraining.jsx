@@ -4,9 +4,9 @@ import ImgDays from "../components/ImgDays";
 
 const ResumenVideoTraining = () => {
   return (
-    <div className="container m-0">
+    <div className="container mx-auto">
       <ImgDays />
-      <div className="mx-auto mt-10 flex w-11/12 max-w-2xl flex-col gap-5 rounded-xl bg-secondary py-2 text-white md:py-5">
+      <div className="flex flex-col w-11/12 max-w-2xl gap-5 py-2 mx-auto mt-10 text-white rounded-xl bg-secondary md:py-5">
         <div className="flex flex-col px-2 text-sm font-light md:gap-3 md:px-5 md:text-base md:font-normal">
           <div className="flex justify-between">
             <h1>Total time</h1>
@@ -34,7 +34,7 @@ const ResumenVideoTraining = () => {
           />
         </div>
       </div>
-      <div className="mt-36 flex w-full justify-center lg:mt-6">
+      <div className="flex justify-center w-full mt-36 lg:mt-6">
         <Button text={"Save"} />
       </div>
     </div>

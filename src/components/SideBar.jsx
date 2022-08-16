@@ -2,9 +2,11 @@ import React from "react";
 import { Avatar } from "flowbite-react";
 import { FiLogOut } from "react-icons/fi";
 import { getAuth } from "firebase/auth";
+import { useSelector } from "react-redux";
 
 const SideBar = () => {
   const auth = getAuth();
+  const { photoURL, displayName } = useSelector((state) => state.login);
 
   return (
     <div className="absolute top-0 z-10 h-screen w-4/5 rounded-tr-[80px] rounded-br-[80px] bg-secondary px-5 text-white md:w-1/5">
@@ -16,7 +18,7 @@ const SideBar = () => {
           />
           <h1 className="font-normal text-white">
             Hi!
-            <br /> Nombre Apellido
+            <br /> {displayName}
           </h1>
         </div>
 
