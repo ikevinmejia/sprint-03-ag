@@ -1,4 +1,6 @@
-import { userTypes } from "../Types/userTypes";
+import {
+  userTypes
+} from "../Types/userTypes";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -8,7 +10,10 @@ import {
   updateProfile,
   FacebookAuthProvider,
 } from "firebase/auth";
-import { facebook, google } from "../../Firebase/firebaseConfig";
+import {
+  facebook,
+  google
+} from "../../Firebase/firebaseConfig";
 
 const loginSync = (user) => ({
   type: userTypes.login,
@@ -54,7 +59,12 @@ export const LoginWithEmail = (email, password) => {
   return (dispatch) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then(({ user: { displayName, email } }) =>
+      .then(({
+          user: {
+            displayName,
+            email
+          }
+        }) =>
         dispatch(
           loginSync({
             displayName,
@@ -71,7 +81,14 @@ export const loginGoogle = () => {
   return (dispatch) => {
     const auth = getAuth();
     signInWithPopup(auth, google)
-      .then(({ user: { displayName, email, photoURL, uid } }) =>
+      .then(({
+          user: {
+            displayName,
+            email,
+            photoURL,
+            uid
+          }
+        }) =>
         dispatch(loginProvider(displayName, email, photoURL, uid))
       )
       .catch((error) => {
@@ -87,7 +104,7 @@ export const loginGoogle = () => {
   };
 };
 
-const loginProvider = (displayName, email, photoURL, uid) => {
+export const loginProvider = (displayName, email, photoURL, uid) => {
   return {
     type: userTypes.login,
     payload: {
@@ -103,7 +120,14 @@ export const loginFacebook = () => {
   return (dispatch) => {
     const auth = getAuth();
     signInWithPopup(auth, facebook)
-      .then(({ user: { displayName, email, photoURL, uid } }) =>
+      .then(({
+          user: {
+            displayName,
+            email,
+            photoURL,
+            uid
+          }
+        }) =>
         dispatch(loginProvider(displayName, email, photoURL, uid))
       )
       .catch((error) => {
@@ -122,7 +146,12 @@ export const loginFacebook = () => {
 
 /* action add WHAG */
 
-export const addWhag = ({ weight, height, age, gener }) => {
+export const addWhag = ({
+  weight,
+  height,
+  age,
+  gener
+}) => {
   return {
     type: userTypes.addWhag,
     payload: {
