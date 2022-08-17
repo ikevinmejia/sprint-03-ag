@@ -5,7 +5,11 @@ import Button from "../Button";
 
 const percentage = 50;
 
-const ProgressBar = () => {
+const ProgressBar = ({ show }) => {
+  const onclick = () => {
+    show();
+  };
+
   return (
     <div className="bg-[rgba(54, 61, 107, 0.5)]  flex h-screen w-screen flex-col items-center justify-evenly backdrop-blur-md">
       <div className="flex h-80 w-80 max-w-[90%] items-center justify-center rounded-xl bg-secondary ">
@@ -25,7 +29,7 @@ const ProgressBar = () => {
           />
         </div>
       </div>
-      <Button text={"Finish the exercise"} type={"button"} />
+      <Button text={"Finish the exercise"} type={"button"} event={onclick} />
     </div>
   );
 };

@@ -1,5 +1,8 @@
 module.exports = {
-  content: ["index.html", "./src/**/*.{js,jsx,ts,tsx,vue,html}"],
+  content: [
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+    "index.html", "./src/**/*.{js,jsx,ts,tsx,vue,html}",
+  ],
   theme: {
     extend: {
       backgroundColor: {
@@ -30,5 +33,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwind-scrollbar')],
+  plugins: [require('tailwind-scrollbar'), require('flowbite/plugin')],
 };

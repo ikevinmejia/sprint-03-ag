@@ -5,6 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../context/ContextProvider";
+import Button from "../components/Button";
 
 const CardsVideos = () => {
   const [prueba2, setPrueba2] = useState([]);
@@ -37,14 +38,14 @@ const CardsVideos = () => {
 
   return (
     <div className="container mx-auto mt-10 ">
-      <div className="scrollbar-track-none scrollbar-thumb-none flex h-[500px] w-full flex-col items-center gap-3 overflow-y-scroll scrollbar">
+      <div className="flex flex-col items-center w-full gap-3 overflow-y-scroll scrollbar-track-none scrollbar-thumb-none h-60 scrollbar">
         {prueba2 &&
           prueba2.map(({ title, id }, index) => (
             <button
               id={id}
               onClick={(e) => handleRedirect(e)}
               key={index}
-              className="flex items-center justify-between w-full h-12 max-w-lg px-10 text-white border  rounded-3xl border-primary focus:bg-primary"
+              className="flex items-center justify-between w-full h-12 max-w-lg px-10 text-white border rounded-3xl border-primary focus:bg-primary"
             >
               <div className="flex items-center gap-5 text-lg w-52">
                 <h1 className="text-xl">{index}</h1>
@@ -55,7 +56,7 @@ const CardsVideos = () => {
           ))}
       </div>
       <div className="flex justify-center w-full">
-        <h1 className="text-sm font-light text-white">Finish early</h1>
+        <Button text={"Finish early"} />
       </div>
     </div>
   );

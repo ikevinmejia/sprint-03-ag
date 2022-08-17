@@ -20,7 +20,7 @@ import ProgressBar from "../components/ProgressBar/ProgressBar";
 import ResumenVideoTraining from "../pages/ResumenVideoTraining";
 import WorkoutAdded from "../pages/WorkoutAdded";
 import Faq from "../pages/Faq";
-
+import Account from "../pages/Account";
 
 function AppRoutes() {
   const [auth, setAuth] = useState(false);
@@ -165,16 +165,63 @@ function AppRoutes() {
               </PrivateRouter>
             }
           />
-          <Route path="/VideoTraining" element={<VideoTraining />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/Notifications" element={<Notifications />} />
-          <Route path="/progress" element={<ProgressBar />} />
-          <Route path="/WorkoutAdded" element={<WorkoutAdded />} />
-          <Route path="/FAQ" element={<Faq />} />
+          <Route
+            path="/VideoTraining"
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <VideoTraining />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/videos"
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <Videos />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/Notifications"
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <Notifications />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/progress"
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <ProgressBar />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/WorkoutAdded"
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <WorkoutAdded />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="/FAQ"
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <Faq />
+              </PrivateRouter>
+            }
+          />
           <Route
             path="/ResumenVideoTraining"
-            element={<ResumenVideoTraining />}
+            element={
+              <PrivateRouter isAutentication={auth}>
+                <ResumenVideoTraining />
+              </PrivateRouter>
+            }
           />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </ContextProvider>
     </BrowserRouter>

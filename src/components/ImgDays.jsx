@@ -5,7 +5,7 @@ const ImgDays = () => {
     <div>
       <div className="relative flex flex-col items-center justify-center w-full ">
         <img
-          className="w-full max-w-3xl overflow-hidden h-60 md:h-80"
+          className="object-cover w-full max-w-3xl overflow-hidden h-80 md:h-80"
           src="https://res.cloudinary.com/dnont3pur/image/upload/v1659843511/Sprint-3/Esta_si_es_xkck0r.png"
           alt="img training"
         />
