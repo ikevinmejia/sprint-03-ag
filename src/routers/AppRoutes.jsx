@@ -16,11 +16,11 @@ import { PublicRouter } from "./PublicRouter";
 import VideoTraining from "../pages/VideoTraining";
 import Videos from "../pages/Videos";
 import Notifications from "../pages/Notifications";
+import { useSelector } from "react-redux";
 
 
 function AppRoutes() {
   const [auth, setAuth] = useState(false);
-
   useEffect(() => {
     const auth2 = getAuth();
     onAuthStateChanged(auth2, (user) => {

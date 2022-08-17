@@ -1,6 +1,4 @@
-import {
-  userTypes
-} from "../Types/userTypes";
+import { userTypes } from "../Types/userTypes";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -10,10 +8,7 @@ import {
   updateProfile,
   FacebookAuthProvider,
 } from "firebase/auth";
-import {
-  facebook,
-  google
-} from "../../Firebase/firebaseConfig";
+import { facebook, google } from "../../Firebase/firebaseConfig";
 
 const loginSync = (user) => ({
   type: userTypes.login,
@@ -25,19 +20,19 @@ export const registerWithEmail = (email, password, name, phoneNumber) => {
     const auth = getAuth();
     console.log(auth);
     createUserWithEmailAndPassword(auth, email, password, phoneNumber)
-
       .then(async () => {
         await updateProfile(auth.currentUser, {
-          displayName: name
+          displayName: name,
         });
-        dispatch(registerSync({
-          email,
-          password,
-          name,
-          phoneNumber,
-          uid: auth.currentUser.uid
-        }));
-
+        dispatch(
+          registerSync({
+            email,
+            password,
+            name,
+            phoneNumber,
+            uid: auth.currentUser.uid,
+          })
+        );
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -59,17 +54,14 @@ export const LoginWithEmail = (email, password) => {
   return (dispatch) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then(({
-          user: {
+      .then(({ user: { displayName, email } }) =>
+        dispatch(
+          loginSync({
             displayName,
-            email
-          }
-        }) =>
-        dispatch(loginSync({
-          displayName,
-          email,
-          password
-        }))
+            email,
+            password,
+          })
+        )
       )
       .catch(() => console.log("Usuario o contraseña invalida"));
   };
@@ -79,14 +71,7 @@ export const loginGoogle = () => {
   return (dispatch) => {
     const auth = getAuth();
     signInWithPopup(auth, google)
-      .then(({
-          user: {
-            displayName,
-            email,
-            photoURL,
-            uid
-          }
-        }) =>
+      .then(({ user: { displayName, email, photoURL, uid } }) =>
         dispatch(loginProvider(displayName, email, photoURL, uid))
       )
       .catch((error) => {
@@ -109,7 +94,7 @@ const loginProvider = (displayName, email, photoURL, uid) => {
       displayName,
       email,
       photoURL,
-      uid
+      uid,
     },
   };
 };
@@ -118,14 +103,7 @@ export const loginFacebook = () => {
   return (dispatch) => {
     const auth = getAuth();
     signInWithPopup(auth, facebook)
-      .then(({
-          user: {
-            displayName,
-            email,
-            photoURL,
-            uid
-          }
-        }) =>
+      .then(({ user: { displayName, email, photoURL, uid } }) =>
         dispatch(loginProvider(displayName, email, photoURL, uid))
       )
       .catch((error) => {
@@ -142,15 +120,9 @@ export const loginFacebook = () => {
   };
 };
 
-
 /* action add WHAG */
 
-export const addWhag = ({
-  weight,
-  height,
-  age,
-  gener
-}) => {
+export const addWhag = ({ weight, height, age, gener }) => {
   return {
     type: userTypes.addWhag,
     payload: {
