@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BiCheck, BiChevronLeft } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import { Context } from "../context/ContextProvider";
+import ReactPlayer from "react-player";
 
 const Videos = () => {
   const navigate = useNavigate();
+  const { videohp } = useContext(Context);
 
   return (
     <div className="container m-0">
@@ -17,9 +20,11 @@ const Videos = () => {
         <BiChevronLeft size={40} />
       </button>
       <div className="relative mx-auto flex max-w-5xl">
-        <img
-          src="https://res.cloudinary.com/dnont3pur/image/upload/v1659840629/Sprint-3/Img_hzjr9k.png"
-          alt="video"
+        <ReactPlayer
+          width="100%"
+          controls
+          url={videohp}
+          style={{ margin: "auto" }}
         />
         <div className="absolute bottom-0 mb-5 flex w-full justify-between px-5">
           <p className="text-sm font-light text-white sm:text-base sm:font-normal lg:text-lg lg:font-medium">
