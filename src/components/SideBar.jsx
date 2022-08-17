@@ -16,11 +16,7 @@ const SideBar = () => {
       <div className="flex items-center justify-between pt-20">
         <div className="flex gap-3">
           <Avatar
-            img={
-              photoURL
-                ? "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                : photoURL
-            }
+            img={photoURL}
             rounded={true}
           />
           <h1 className="font-normal text-white">
