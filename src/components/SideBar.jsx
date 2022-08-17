@@ -9,7 +9,7 @@ const SideBar = () => {
   const auth = getAuth();
   const { photoURL, displayName } = useSelector((state) => state.login);
   const { handleSider } = useContext(Context);
-
+  //a
   return (
     <div className="absolute top-0 z-10 h-screen w-4/5 rounded-tr-[80px] rounded-br-[80px] bg-secondary px-5 text-white md:w-1/5">
       <div className="flex items-center justify-between pt-20">
