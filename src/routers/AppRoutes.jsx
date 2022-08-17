@@ -24,7 +24,6 @@ import Faq from "../pages/Faq";
 
 function AppRoutes() {
   const [auth, setAuth] = useState(false);
-
   useEffect(() => {
     const auth2 = getAuth();
     onAuthStateChanged(auth2, (user) => {
