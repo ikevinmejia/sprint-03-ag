@@ -7,10 +7,17 @@ function ContextProvider({ children }) {
   const [gener, setGener] = useState("");
   const [isSelected, setIsSelected] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
   const [showSider, setShowSider] = useState(false);
+  const [prueba, setPrueba] = useState([]);
+  const [musculoEncontrado, setMusculoEncontrado] = useState([]);
 
   const handleModal = () => {
     setShowModal(!showModal);
+  };
+
+  const handleFilter = () => {
+    setShowFilter(!showFilter);
   };
 
   const handleSider = () => {
@@ -27,7 +34,14 @@ function ContextProvider({ children }) {
     handleModal,
     showModal,
     handleSider,
-    showSider
+    showSider,
+    handleFilter,
+    showFilter,
+    setShowSider,
+    prueba,
+    setPrueba,
+    musculoEncontrado,
+    setMusculoEncontrado,
   };
 
   return <Context.Provider value={data}>{children}</Context.Provider>;

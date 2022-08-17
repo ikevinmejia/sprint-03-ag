@@ -11,14 +11,24 @@ import { useSelector } from "react-redux";
 import SideBar from "../components/SideBar";
 import { db } from "../Firebase/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
+import Modal from "../components/Modal/Modal";
+import FilterHome from "../components/FilterHome";
 
 function Home() {
-  const { isSelected, handleModal, showModal, showSider, handleSider } =
-    useContext(Context);
+  const {
+    isSelected,
+    handleModal,
+    showModal,
+    showSider,
+    handleSider,
+    handleFilter,
+    showFilter,
+    setPrueba,
+    prueba,
+    setMusculoEncontrado,
+    musculoEncontrado,
+  } = useContext(Context);
   const { dataForm } = useSelector((state) => state.myWorkouts);
-
-  const [prueba, setPrueba] = useState([]);
-  const [musculoEncontrado, setMusculoEncontrado] = useState({});
 
   useEffect(() => {
     const calzon = async () => {
@@ -37,7 +47,9 @@ function Home() {
   }, []);
 
   const event = (id) => {
-    setMusculoEncontrado(prueba.find((muscles) => muscles.muscle == id));
+    setMusculoEncontrado([prueba.find((muscles) => muscles.muscle == id)]);
+    console.log(musculoEncontrado);
+    handleFilter();
   };
 
   return (
@@ -52,18 +64,18 @@ function Home() {
         <div className="flex flex-col w-full max-w-xl gap-4 mx-auto mt-11">
           {isSelected ? (
             <div className="text-center">
-              {/* Falta configurar cada item en el HomeCard por props */}
-
-              {dataForm &&
-                dataForm.map((item, index) => (
-                  <HomeCard
-                    key={index}
-                    img={item.file}
-                    time={item.time}
-                    description={item.description}
-                    title={item.titleWorkout}
-                  />
-                ))}
+              <div className="scrollbar-track-none scrollbar-thumb-none mb-5 flex h-[26rem] w-full flex-col gap-3  overflow-auto scrollbar">
+                {dataForm &&
+                  dataForm.map((item, index) => (
+                    <HomeCard
+                      key={index}
+                      img={item.file}
+                      time={item.time}
+                      description={item.description}
+                      title={item.titleWorkout}
+                    />
+                  ))}
+              </div>
 
               <Button
                 text={"Create new workout"}
@@ -74,7 +86,7 @@ function Home() {
           ) : (
             <>
               <div className="flex items-center justify-center gap-2 mx-5 text-sm text-white ">
-                <Categories category={"All body"} idb={"allbody"} />
+                {/* <Categories category={"All body"} idb={"allbody"} /> */}
                 {prueba &&
                   prueba.map(({ muscle }, index) => (
                     <Categories
@@ -104,6 +116,11 @@ function Home() {
 
       {showModal && <FormAddWorkout />}
       {showSider && <SideBar />}
+      {showFilter && (
+        <Modal>
+          <FilterHome />
+        </Modal>
+      )}
     </div>
   );
 }
