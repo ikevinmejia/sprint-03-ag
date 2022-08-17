@@ -16,14 +16,10 @@ import { PublicRouter } from "./PublicRouter";
 import VideoTraining from "../pages/VideoTraining";
 import Videos from "../pages/Videos";
 import Notifications from "../pages/Notifications";
-<<<<<<< HEAD
-import { useSelector } from "react-redux";
-=======
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 import ResumenVideoTraining from "../pages/ResumenVideoTraining";
 import WorkoutAdded from "../pages/WorkoutAdded";
 import Faq from "../pages/Faq";
->>>>>>> 4e4b12306e430bbffcf7cc6107902d60894304b9
 
 
 function AppRoutes() {
