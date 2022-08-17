@@ -15,7 +15,11 @@ function HomeHeader() {
         onClick={handleSider}
       >
         <Avatar
-          img={photoURL}
+          img={
+            photoURL
+              ? "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              : photoURL
+          }
           rounded
         />
         <h1 className="font-normal text-white">
