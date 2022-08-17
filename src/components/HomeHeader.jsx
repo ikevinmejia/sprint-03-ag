@@ -14,14 +14,7 @@ function HomeHeader() {
         className="flex gap-3 transition-all duration-700 cursor-pointer "
         onClick={handleSider}
       >
-        <Avatar
-          img={
-            photoURL
-              ? "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              : photoURL
-          }
-          rounded
-        />
+        <Avatar img={photoURL} rounded />
         <h1 className="font-normal text-white">
           Hi!
           <br /> {displayName}

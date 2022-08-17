@@ -61,11 +61,7 @@ const Account = () => {
     <div className="container flex flex-col items-center justify-between gap-8 mx-auto">
       <ExitInfo rute={-1} text={"Account"} estilos={"text-white"} />
       <Avatar
-        img={
-          login.photoURL
-            ? "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-            : login.photoURL
-        }
+        img={login.photoURL}
         size="lg"
         rounded={true}
         status="online"

@@ -15,14 +15,7 @@ const SideBar = () => {
     <div className="absolute top-0 z-10 h-screen w-4/5 rounded-tr-[80px] rounded-br-[80px] bg-secondary px-5 text-white md:w-1/5">
       <div className="flex items-center justify-between pt-20">
         <div className="flex gap-3">
-          <Avatar
-            img={
-              photoURL
-                ? "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                : photoURL
-            }
-            rounded={true}
-          />
+          <Avatar img={photoURL} rounded={true} />
           <h1 className="font-normal text-white">
             Hi!
             <br /> {displayName}
