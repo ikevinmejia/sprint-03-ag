@@ -87,7 +87,7 @@ export const loginGoogle = () => {
   };
 };
 
-const loginProvider = (displayName, email, photoURL, uid) => {
+export const loginProvider = (displayName, email, photoURL, uid) => {
   return {
     type: userTypes.login,
     payload: {
