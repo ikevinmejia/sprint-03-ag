@@ -1,4 +1,6 @@
+import { collection, getDocs } from "firebase/firestore";
 import React, { createContext, useState } from "react";
+import { db } from "../Firebase/firebaseConfig";
 
 const Context = createContext();
 
@@ -11,6 +13,12 @@ function ContextProvider({ children }) {
   const [showSider, setShowSider] = useState(false);
   const [prueba, setPrueba] = useState([]);
   const [musculoEncontrado, setMusculoEncontrado] = useState([]);
+  const [videohp, setVideohp] = useState([]);
+
+  const funcionVideosHps = async () => {
+    const videose = await getDocs(collection(db, "videos"));
+    setVideohp(videose.data());
+  };
 
   const handleModal = () => {
     setShowModal(!showModal);
@@ -42,6 +50,9 @@ function ContextProvider({ children }) {
     setPrueba,
     musculoEncontrado,
     setMusculoEncontrado,
+    videohp,
+    setVideohp,
+    funcionVideosHps,
   };
 
   return <Context.Provider value={data}>{children}</Context.Provider>;
