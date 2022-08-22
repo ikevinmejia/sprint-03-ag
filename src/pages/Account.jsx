@@ -25,10 +25,7 @@ const Account = () => {
     },
     // validationSchema: SignupSchema,
     validationSchema: Yup.object({
-      displayName: Yup.string()
-        .min(4, "Very short")
-        .max(15, "Very long")
-        .required("Required"),
+      displayName: Yup.string().required("Required"),
       phone: Yup.number().positive().integer().required("Required"),
       email: Yup.string().email("Email@mail.com").required("Required"),
     }),
